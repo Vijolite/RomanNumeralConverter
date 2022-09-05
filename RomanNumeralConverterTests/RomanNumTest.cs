@@ -76,7 +76,7 @@ namespace RomanNumeralConverterTests
         {
             RomanNum roman = new RomanNum("VII");
             int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 7, "Roman II should be converted into 7");
+            Assert.IsTrue(x == 7, "Roman VII should be converted into 7");
         }
         [TestMethod]
         public void TestConvertTo8()
