@@ -115,5 +115,19 @@ namespace RomanNumeralConverterTests
             int x = roman.ConvertIntoInt();
             x.Should().Be(34);
         }
+        [TestMethod]
+        public void TestConvertTo63()
+        {
+            RomanNum roman = new RomanNum("LXIII");
+            int x = roman.ConvertIntoInt();
+            x.Should().Be(63);
+        }
+        [TestMethod]
+        public void TestConvertTo210()
+        {
+            RomanNum roman = new RomanNum("CCX");
+            int x = roman.ConvertIntoInt();
+            x.Should().Be(210);
+        }
     }
 }
