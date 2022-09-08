@@ -2,6 +2,7 @@ using RomanNumeralConverterLibrary;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
+using FluentAssertions;
 
 namespace RomanNumeralConverterTests
 {
@@ -9,24 +10,25 @@ namespace RomanNumeralConverterTests
 
     public class RomanNumTest
     {
-        [TestCase("I")]
-        [TestCase("II")]
-        [TestCase("III")]
-        public void TestIfStringIsRomanNumeral(string value)
-        {
-            var result = RomanNum.IsRomanNumeral(value);
-            Assert.IsTrue(result, $"{value} should be a Roman numeral");
-        }
 
-        [TestCase("aa")]
-        [TestCase("BB")]
-        [TestCase("ccc")]
-        [TestCase("")]
-        public void TestIfStringIsNotRomanNumeral(string value)
-        {
-            var result = RomanNum.IsRomanNumeral(value);
-            Assert.IsFalse(result, $"{value} should be a Roman numeral, but it is not");
-        }
+            [TestCase("I")]
+            [TestCase("II")]
+            [TestCase("III")]
+            public void TestIfStringIsRomanNumeral(string value)
+            {
+                var result = RomanNum.IsRomanNumeral(value);
+                Assert.IsTrue(result, $"{value} should be a Roman numeral");
+            }
+
+            [TestCase("aa")]
+            [TestCase("BB")]
+            [TestCase("ccc")]
+            [TestCase("")]
+            public void TestIfStringIsNotRomanNumeral(string value)
+            {
+                var result = RomanNum.IsRomanNumeral(value);
+                Assert.IsFalse(result, $"{value} should be a Roman numeral, but it is not");
+            }
 
         [TestMethod]
         public void TestConvertTo1()
@@ -98,6 +100,20 @@ namespace RomanNumeralConverterTests
             RomanNum roman = new RomanNum("X");
             int x = roman.ConvertIntoInt();
             Assert.IsTrue(x == 10, "Roman X should be converted into 10");
+        }
+        [TestMethod]
+        public void TestConvertTo11()
+        {
+            RomanNum roman = new RomanNum("XI");
+            int x = roman.ConvertIntoInt();
+            x.Should().Be(11);
+        }
+        [TestMethod]
+        public void TestConvertTo34()
+        {
+            RomanNum roman = new RomanNum("XXXIV");
+            int x = roman.ConvertIntoInt();
+            x.Should().Be(34);
         }
     }
 }

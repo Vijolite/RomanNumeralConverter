@@ -4,9 +4,24 @@
     {
         private static string[] table = new string[] { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
 
+        private static Dictionary<char, int> romanTranslation = new Dictionary<char, int>()
+        {
+            {'I', 1},
+            {'V', 5},
+            {'X', 10}
+        };
         public static bool IsRomanNumeral(string romanValue)
         {
-            return (Array.IndexOf(table, romanValue) != -1);
+            if (romanValue.Length == 0) return false;
+            else 
+            {
+                foreach (char letter in romanValue)
+                {
+                    if (!romanTranslation.ContainsKey(letter)) return false;
+                }
+                return true;
+            }
+
         }
 
         private string romanValue;
@@ -16,7 +31,7 @@
             set 
             { 
                 if (IsRomanNumeral(value)) romanValue = value; 
-                else throw new Exception("It is not a Roman numeral (or it is greater than X)");
+                else throw new Exception("It is not a Roman numeral");
             } 
         }
 
@@ -26,8 +41,18 @@
         }
         public int ConvertIntoInt()
         {
-            int position = Array.IndexOf(table, RomanValue);
-            return position + 1;
+            int result = 0;
+            for (int i = this.romanValue.Length-1; i>=0; i--)
+            {
+                if (i == this.romanValue.Length - 1) // the 1st letter from the right
+                    result += romanTranslation[this.romanValue[i]];
+                else
+                    if (romanTranslation[this.romanValue[i]]< romanTranslation[this.romanValue[i+1]])
+                        result -= romanTranslation[this.romanValue[i]];
+                    else
+                        result += romanTranslation[this.romanValue[i]];
+            }
+            return result;
         }
 
     }
