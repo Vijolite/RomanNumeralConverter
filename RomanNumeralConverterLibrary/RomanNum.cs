@@ -2,8 +2,6 @@
 {
     public class RomanNum
     {
-        private static string[] table = new string[] { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
-
         private static Dictionary<char, int> romanTranslation = new Dictionary<char, int>()
         {
             {'I', 1},
@@ -46,15 +44,15 @@
         public int ConvertIntoInt()
         {
             int result = 0;
-            for (int i = this.romanValue.Length-1; i>=0; i--)
+            for (int i = this.RomanValue.Length-1; i>=0; i--)
             {
-                if (i == this.romanValue.Length - 1) // the 1st letter from the right
-                    result += romanTranslation[this.romanValue[i]];
+                if (i == this.RomanValue.Length - 1) // the 1st letter from the right
+                    result += romanTranslation[this.RomanValue[i]];
                 else
-                    if (romanTranslation[this.romanValue[i]]< romanTranslation[this.romanValue[i+1]])
-                        result -= romanTranslation[this.romanValue[i]];
+                    if (romanTranslation[this.RomanValue[i]]< romanTranslation[this.RomanValue[i+1]])
+                        result -= romanTranslation[this.RomanValue[i]];
                     else
-                        result += romanTranslation[this.romanValue[i]];
+                        result += romanTranslation[this.RomanValue[i]];
             }
             return result;
         }

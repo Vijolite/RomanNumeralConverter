@@ -136,5 +136,13 @@ namespace RomanNumeralConverterTests
             int x = roman.ConvertIntoInt();
             x.Should().Be(3505);
         }
+
+        [TestMethod]
+        public void TestConvertIntToRoman2000()
+        {
+            IntNum x = new IntNum(2000);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("MM");
+        }
     }
 }
