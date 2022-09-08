@@ -136,13 +136,54 @@ namespace RomanNumeralConverterTests
             int x = roman.ConvertIntoInt();
             x.Should().Be(3505);
         }
-
         [TestMethod]
         public void TestConvertIntToRoman2000()
         {
             IntNum x = new IntNum(2000);
             string result = x.ConvertIntoRoman();
             result.Should().Be("MM");
+        }
+        [TestMethod]
+        public void TestConvertIntToRoman2700()
+        {
+            IntNum x = new IntNum(2700);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("MMDCC");
+        }
+        [TestMethod]
+        public void TestConvertIntToRoman2780()
+        {
+            IntNum x = new IntNum(2780);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("MMDCCLXXX");
+        }
+        [TestMethod]
+        public void TestConvertIntToRoman2340()
+        {
+            IntNum x = new IntNum(2340);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("MMCCCXL");
+        }
+        [TestMethod]
+        public void TestConvertIntToRoman235()
+        {
+            IntNum x = new IntNum(235);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("CCXXXV");
+        }
+        [TestMethod]
+        public void TestConvertIntToRoman17()
+        {
+            IntNum x = new IntNum(17);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("XVII");
+        }
+        [TestMethod]
+        public void TestConvertIntToRoman9()
+        {
+            IntNum x = new IntNum(9);
+            string result = x.ConvertIntoRoman();
+            result.Should().Be("IX");
         }
     }
 }

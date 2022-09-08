@@ -7,7 +7,7 @@ namespace RomanNumeralConverterLibrary
     {
 
         private static string[] thousands = new string[]  { "", "M", "MM", "MMM" };
-        private static string[] hundrets = new string[] { "",  "C",  "CC",  "CCC",  "CD", "D", "DC", "DCC", "DCCC", "CM" };
+        private static string[] hundreds = new string[] { "",  "C",  "CC",  "CCC",  "CD", "D", "DC", "DCC", "DCCC", "CM" };
         private static string[] tens = new string[] { "",  "X",  "XX",  "XXX",  "XL","L", "LX", "LXX", "LXXX", "XC" };
         private static string[] ones = new string[] { "",  "I",  "II",  "III",  "IV", "V", "VI", "VII", "VIII", "IX" };
         public int Value { get; set; }
@@ -19,7 +19,10 @@ namespace RomanNumeralConverterLibrary
         public string ConvertIntoRoman()
         {
             string thousandsRoman = thousands[Value / 1000];
-            return thousandsRoman;
+            string hundredsRoman = hundreds[Value % 1000 / 100];
+            string tensRoman = tens[Value % 100 / 10];
+            string onesRoman = ones[Value % 10];
+            return thousandsRoman+ hundredsRoman + tensRoman + onesRoman;
         }
 
     }
