@@ -129,5 +129,12 @@ namespace RomanNumeralConverterTests
             int x = roman.ConvertIntoInt();
             x.Should().Be(210);
         }
+        [TestMethod]
+        public void TestConvertTo3005()
+        {
+            RomanNum roman = new RomanNum("MMMDV");
+            int x = roman.ConvertIntoInt();
+            x.Should().Be(3505);
+        }
     }
 }
