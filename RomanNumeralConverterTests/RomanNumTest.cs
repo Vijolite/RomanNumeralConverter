@@ -30,77 +30,22 @@ namespace RomanNumeralConverterTests
                 Assert.IsFalse(result, $"{value} should be a Roman numeral, but it is not");
             }
 
-        [TestMethod]
-        public void TestConvertTo1()
+        [TestCase("I",1)]
+        [TestCase("II", 2)]
+        [TestCase("III", 3)]
+        [TestCase("IV", 4)]
+        [TestCase("V", 5)]
+        [TestCase("VI", 6)]
+        [TestCase("VII", 7)]
+        [TestCase("VIII", 8)]
+        [TestCase("IX", 9)]
+        [TestCase("X", 10)]
+        public void TestConvertRomanToInt(string romanVal, int result)
         {
-            RomanNum roman = new RomanNum("I");
-            int x = roman.ConvertIntoInt();
-            //Assert.AreEqual(x, 1);
-            Assert.IsTrue(x==1, "Roman I should be converted into 1");
+            RomanNum roman = new RomanNum(romanVal);
+            roman.ConvertIntoInt().Should().Be(result);
         }
-        [TestMethod]
-        public void TestConvertTo2()
-        {
-            RomanNum roman = new RomanNum("II");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 2, "Roman II should be converted into 2");
-        }
-        [TestMethod]
-        public void TestConvertTo3()
-        {
-            RomanNum roman = new RomanNum("III");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 3, "Roman III should be converted into 3");
-        }
-        [TestMethod]
-        public void TestConvertTo4()
-        {
-            RomanNum roman = new RomanNum("IV");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 4, "Roman IV should be converted into 4");
-        }
-        [TestMethod]
-        public void TestConvertTo5()
-        {
-            RomanNum roman = new RomanNum("V");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 5, "Roman V should be converted into 5");
-        }
-        [TestMethod]
-        public void TestConvertTo6()
-        {
-            RomanNum roman = new RomanNum("VI");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 6, "Roman VI should be converted into 6");
-        }
-        [TestMethod]
-        public void TestConvertTo7()
-        {
-            RomanNum roman = new RomanNum("VII");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 7, "Roman VII should be converted into 7");
-        }
-        [TestMethod]
-        public void TestConvertTo8()
-        {
-            RomanNum roman = new RomanNum("VIII");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 8, "Roman VIII should be converted into 8");
-        }
-        [TestMethod]
-        public void TestConvertTo9()
-        {
-            RomanNum roman = new RomanNum("IX");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 9, "Roman IX should be converted into 9");
-        }
-        [TestMethod]
-        public void TestConvertTo10()
-        {
-            RomanNum roman = new RomanNum("X");
-            int x = roman.ConvertIntoInt();
-            Assert.IsTrue(x == 10, "Roman X should be converted into 10");
-        }
+        
         [TestMethod]
         public void TestConvertTo11()
         {

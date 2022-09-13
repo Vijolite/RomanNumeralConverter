@@ -1,4 +1,6 @@
-﻿namespace RomanNumeralConverterLibrary
+﻿using System.Text.RegularExpressions;
+
+namespace RomanNumeralConverterLibrary
 {
     public class RomanNum
     {
@@ -12,7 +14,7 @@
             {'D', 500},
             {'M', 1000}
         };
-        public static bool IsRomanNumeral(string romanValue)
+        public static bool IsRomanNumeral(string romanValue) // should be more complicted not just checking if it contains from specific letters
         {
             if (romanValue.Length == 0) return false;
             else 
@@ -22,8 +24,11 @@
                     if (!romanTranslation.ContainsKey(letter)) return false;
                 }
                 return true;
-            }
+                //string strRegex = @"(^M{ 0,3} (CM | CD | D ? C{ 0,3})(XC | XL | L ? X{ 0,3})(IX | IV | V ? I{ 0,3})$)";
+                //Regex re = new Regex(strRegex);
+                //return re.IsMatch(romanValue);
 
+            }
         }
 
         private string romanValue;
